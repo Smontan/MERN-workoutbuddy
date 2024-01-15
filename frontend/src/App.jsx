@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
 const App = () => {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
 
   return (
     <div className="App">
@@ -15,10 +15,19 @@ const App = () => {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route path="/" element={user ? <Home /> : <Navigate to="/login"/>}></Route>
-            <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>}></Route>
-            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/"/>}></Route>
-            <Route path ="*" element={<Navigate to="/" />}/>
+            <Route
+              path="/"
+              element={user ? <Home /> : <Navigate to="/login" />}
+            ></Route>
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to="/" />}
+            ></Route>
+            <Route
+              path="/signup"
+              element={!user ? <Signup /> : <Navigate to="/" />}
+            ></Route>
+            <Route path="/*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </BrowserRouter>
